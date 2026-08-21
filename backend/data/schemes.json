@@ -1,0 +1,42 @@
+{
+  "PM-KISAN": {
+    "full_name": "Pradhan Mantri Kisan Samman Nidhi",
+    "eligibility_rules": {
+      "occupation": ["farmer"],
+      "max_land_acres": null,
+      "excluded": ["institutional land holders", "constitutional post holders", "income tax payers"]
+    },
+    "benefit": "₹6,000/year in three installments",
+    "required_documents": ["Aadhaar", "Land ownership records", "Bank account details"],
+    "apply_link": "https://pmkisan.gov.in"
+  },
+  "PMAY": {
+    "full_name": "Pradhan Mantri Awas Yojana",
+    "eligibility_rules": {
+      "income_categories": ["EWS", "LIG", "MIG-I", "MIG-II"],
+      "condition": "Household should not own a pucca house anywhere in India"
+    },
+    "benefit": "Interest subsidy on home loan / direct financial assistance",
+    "required_documents": ["Aadhaar", "Income certificate", "Property/land documents"],
+    "apply_link": "https://pmaymis.gov.in"
+  },
+  "NSP_SCHOLARSHIP": {
+    "full_name": "National Scholarship Portal — Post-Matric Scholarship",
+    "eligibility_rules": {
+      "student_category": ["SC", "ST", "OBC", "Minority", "EWS"],
+      "max_family_income": 250000
+    },
+    "benefit": "Tuition fee reimbursement + maintenance allowance",
+    "required_documents": ["Aadhaar", "Income certificate", "Caste certificate (if applicable)", "Bonafide student certificate"],
+    "apply_link": "https://scholarships.gov.in"
+  },
+  "AYUSHMAN_BHARAT": {
+    "full_name": "Ayushman Bharat — Pradhan Mantri Jan Arogya Yojana (PM-JAY)",
+    "eligibility_rules": {
+      "condition": "Household listed under SECC 2011 deprivation criteria or state-extended list"
+    },
+    "benefit": "₹5 lakh/family/year health cover, cashless treatment at empanelled hospitals",
+    "required_documents": ["Aadhaar", "Ration card", "SECC verification"],
+    "apply_link": "https://pmjay.gov.in"
+  }
+}

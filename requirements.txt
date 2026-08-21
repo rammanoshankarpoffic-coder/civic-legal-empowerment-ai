@@ -1,0 +1,9 @@
+flask==3.0.3
+flask-cors==4.0.1
+requests==2.32.3
+python-dotenv==1.0.1
+pytest==8.2.2
+
+# Optional — only needed if you use ANTHROPIC_API_KEY (paid tier).
+# Safe to leave installed even if unused; comment out to slim the install.
+anthropic==0.34.2

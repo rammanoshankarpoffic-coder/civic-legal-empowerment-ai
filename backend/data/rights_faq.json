@@ -1,0 +1,42 @@
+{
+  "tenant": {
+    "summary": "Landlords must return the security deposit within a reasonable period after move-out, minus legitimate deductions (damage beyond normal wear, unpaid dues).",
+    "legal_basis": ["Model Tenancy Act 2021, Section 16"],
+    "next_steps": [
+      "Send a written demand letter (email/registered post) requesting the deposit within 15 days",
+      "Keep photos/videos of the property condition at move-out",
+      "If unresolved, file a complaint with the Rent Authority / Rent Court set up under the state tenancy act",
+      "Consumer/civil court is an option if amount is disputed and Rent Authority is unavailable"
+    ],
+    "escalation_path": "Rent Authority (or Rent Court) under the applicable State Tenancy Act"
+  },
+  "consumer": {
+    "summary": "Consumers who receive defective goods or deficient services can seek replacement, repair, refund, or compensation.",
+    "legal_basis": ["Consumer Protection Act 2019, Section 2(6) & Section 35"],
+    "next_steps": [
+      "Raise the complaint with the seller/service provider in writing first",
+      "If unresolved within a reasonable time, file a complaint on the National Consumer Helpline / e-Daakhil portal",
+      "Claims under ₹50 lakh generally go to the District Consumer Disputes Redressal Commission"
+    ],
+    "escalation_path": "District Consumer Disputes Redressal Commission / e-Daakhil portal"
+  },
+  "workplace": {
+    "summary": "Employees are entitled to timely payment of wages, safe working conditions, and protection from arbitrary termination without due process (subject to employment terms/state law).",
+    "legal_basis": ["Payment of Wages Act 1936", "Industrial Disputes Act 1947 (where applicable)"],
+    "next_steps": [
+      "Raise the issue in writing with HR/employer and keep a copy",
+      "If wages are withheld, file a claim with the Labour Commissioner's office",
+      "For unfair termination, consult the local Labour Court / Industrial Tribunal"
+    ],
+    "escalation_path": "Office of the Labour Commissioner (State)"
+  },
+  "default": {
+    "summary": "This specific dispute type isn't in our grounded knowledge base yet — general guidance only, please verify with a legal aid clinic (e.g. District Legal Services Authority, DLSA) before acting.",
+    "legal_basis": [],
+    "next_steps": [
+      "Contact your District Legal Services Authority (DLSA) for free legal aid",
+      "Call the National Legal Services Authority (NALSA) helpline: 15100"
+    ],
+    "escalation_path": "District Legal Services Authority (DLSA)"
+  }
+}

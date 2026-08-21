@@ -1,0 +1,44 @@
+{
+  "passport": {
+    "department": "Ministry of External Affairs, Regional Passport Office",
+    "pio_role": "Public Information Officer, Regional Passport Office",
+    "fee": "₹10 (IPO / court fee stamp / online)",
+    "avg_response_days": 30,
+    "act_section": "RTI Act 2005, Section 6(1)"
+  },
+  "ration_card": {
+    "department": "Food, Civil Supplies & Consumer Affairs Department (State)",
+    "pio_role": "Public Information Officer, District Food & Civil Supplies Office",
+    "fee": "₹10 (IPO / court fee stamp / online)",
+    "avg_response_days": 30,
+    "act_section": "RTI Act 2005, Section 6(1)"
+  },
+  "pension": {
+    "department": "Department of Pension & Pensioners' Welfare",
+    "pio_role": "Public Information Officer, Pension Disbursing Office",
+    "fee": "₹10 (IPO / court fee stamp / online)",
+    "avg_response_days": 30,
+    "act_section": "RTI Act 2005, Section 6(1)"
+  },
+  "land_records": {
+    "department": "Revenue Department (State) — Tehsildar / Sub-Registrar Office",
+    "pio_role": "Public Information Officer, Tehsil Office",
+    "fee": "₹10 (IPO / court fee stamp / online)",
+    "avg_response_days": 30,
+    "act_section": "RTI Act 2005, Section 6(1)"
+  },
+  "municipal_services": {
+    "department": "Municipal Corporation / Municipality (Urban Local Body)",
+    "pio_role": "Public Information Officer, Municipal Corporation",
+    "fee": "₹10 (IPO / court fee stamp / online)",
+    "avg_response_days": 30,
+    "act_section": "RTI Act 2005, Section 6(1)"
+  },
+  "default": {
+    "department": "General Administration Department (State)",
+    "pio_role": "Public Information Officer, District Collectorate",
+    "fee": "₹10 (IPO / court fee stamp / online)",
+    "avg_response_days": 30,
+    "act_section": "RTI Act 2005, Section 6(1)"
+  }
+}
