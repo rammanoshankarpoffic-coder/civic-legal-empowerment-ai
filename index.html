@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nyaya Sathi — AI for Civic and Legal Empowerment</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <h1>🧭 Nyaya Sathi</h1>
+      <p>Ask about your rights, RTI, government schemes, or fill a form — in plain language.</p>
+    </header>
+
+    <div class="quick-prompts">
+      <button data-prompt="My passport renewal has been pending for 2 months, how do I ask why?">RTI: passport delay</button>
+      <button data-prompt="My landlord is not returning my security deposit.">Rights: tenant deposit</button>
+      <button data-prompt="I am a farmer with 1.5 acres, am I eligible for PM-KISAN?">Eligibility: PM-KISAN</button>
+      <button data-prompt="I want to fill an RTI application form.">Form: fill RTI</button>
+    </div>
+
+    <main id="chat-window" class="chat-window" aria-live="polite"></main>
+
+    <form id="chat-form" class="chat-form">
+      <input
+        id="chat-input"
+        type="text"
+        placeholder="Describe your problem in your own words..."
+        autocomplete="off"
+        required
+      />
+      <button type="submit">Send</button>
+    </form>
+
+    <footer class="app-footer">
+      Backend mode: <span id="mode-indicator">checking...</span>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
