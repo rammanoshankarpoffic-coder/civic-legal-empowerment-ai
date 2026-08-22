@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:5000";
+const API_BASE = "https://civic-legal-empowerment-ai.onrender.com";
 const SESSION_ID = "web-" + Math.random().toString(36).slice(2);
 
 const chatWindow = document.getElementById("chat-window");
