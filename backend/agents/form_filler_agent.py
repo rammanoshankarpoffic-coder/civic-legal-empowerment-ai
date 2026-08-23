@@ -28,18 +28,32 @@ _FORM_TEMPLATES = {
     ],
 }
 
-# In-memory session store: {session_id: {"form_type": ..., "answers": {...}, "step": int}}
+# In-memory session store: {session_id: {"form_type": ..., "answers": {...}, "step": int, "complete": bool}}
 _SESSIONS = {}
 
 
+def is_active(session_id: str) -> bool:
+    """True if this session has an in-progress (not yet completed) form."""
+    session = _SESSIONS.get(session_id)
+    return session is not None and not session.get("complete", False)
+
+
 def start_or_continue(session_id: str, form_type: str, answer: str = None, language: str = "en") -> dict:
+    # If this session already exists, always continue with its own stored
+    # form_type — the caller (e.g. the chat orchestrator, which re-classifies
+    # intent fresh on every message) may not reliably know which form is
+    # already in progress.
+    existing = _SESSIONS.get(session_id)
+    if existing is not None:
+        form_type = existing["form_type"]
+
     if form_type not in _FORM_TEMPLATES:
         return {"error": f"Unknown form_type. Available: {list(_FORM_TEMPLATES.keys())}"}
 
     questions = _FORM_TEMPLATES[form_type]
 
     session = _SESSIONS.setdefault(
-        session_id, {"form_type": form_type, "answers": {}, "step": 0}
+        session_id, {"form_type": form_type, "answers": {}, "step": 0, "complete": False}
     )
 
     # Record the answer to the previous question, if any
@@ -69,6 +83,8 @@ def start_or_continue(session_id: str, form_type: str, answer: str = None, langu
 
 
 def _finalize(session: dict, language: str) -> dict:
+    session["complete"] = True
+
     system_prompt = (
         "You are a Conversational Form-Filler. Take the collected answers and "
         "render them as a clean, properly formatted official document ready for "

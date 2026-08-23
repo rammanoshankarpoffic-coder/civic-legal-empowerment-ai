@@ -39,12 +39,58 @@ def _rule_based_check(scheme_key: str, profile: dict) -> tuple:
     return None, notes  # inconclusive from rules alone -> let Claude reason with context
 
 
+_SCHEME_ALIASES = {
+    "PM-KISAN": ["pm-kisan", "pm kisan", "pmkisan", "kisan samman"],
+    "PMAY": ["pmay", "awas yojana", "pradhan mantri awas"],
+    "NSP_SCHOLARSHIP": ["scholarship", "nsp", "national scholarship", "post-matric"],
+    "AYUSHMAN_BHARAT": ["ayushman", "pm-jay", "pmjay", "jan arogya"],
+}
+
+
+def _detect_scheme_in_text(text: str) -> str:
+    normalized = text.lower()
+    for scheme_key, aliases in _SCHEME_ALIASES.items():
+        if any(alias in normalized for alias in aliases):
+            return scheme_key
+    return None
+
+
+def _extract_profile_from_text(text: str) -> dict:
+    """Very light keyword/number extraction so the rule-based pre-check has
+    something to work with even when the caller passes an empty profile."""
+    import re
+
+    profile = {}
+    text_lower = text.lower()
+
+    for occ in ["farmer", "student", "fisherman", "artisan", "vendor", "employee"]:
+        if occ in text_lower:
+            profile["occupation"] = occ
+            break
+
+    acres_match = re.search(r"(\d+(\.\d+)?)\s*acre", text_lower)
+    if acres_match:
+        profile["land_acres"] = float(acres_match.group(1))
+
+    income_match = re.search(r"income[^\d]{0,15}(\d[\d,]*)", text_lower)
+    if income_match:
+        profile["family_income"] = int(income_match.group(1).replace(",", ""))
+
+    return profile
+
+
 def check_eligibility(scheme: str, profile: dict, language: str = "en") -> dict:
+    # First try treating `scheme` as an exact key/name (used by the direct
+    # /api/eligibility endpoint). If that fails, search for a known scheme
+    # mentioned anywhere in the text (used by the /api/chat orchestrator,
+    # which passes the citizen's raw message here).
     scheme_key = scheme.strip().upper().replace(" ", "_")
     if scheme_key not in _SCHEMES:
-        # fuzzy fallback: try direct match on full name
         matches = [k for k, v in _SCHEMES.items() if scheme.lower() in v["full_name"].lower()]
-        scheme_key = matches[0] if matches else None
+        scheme_key = matches[0] if matches else _detect_scheme_in_text(scheme)
+
+    if not profile:
+        profile = _extract_profile_from_text(scheme)
 
     if not scheme_key:
         return {

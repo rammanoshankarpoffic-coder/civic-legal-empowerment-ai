@@ -61,6 +61,19 @@ def chat():
     if not message:
         return jsonify({"error": "message is required"}), 400
 
+    # If this session is already mid-way through filling a form, treat the
+    # incoming message as the answer to the pending question — regardless of
+    # what keywords it does or doesn't contain. Without this check, a plain
+    # answer like "Karnataka" or a name gets re-classified from scratch on
+    # every turn and can fall through to "unknown", silently losing progress.
+    if form_filler_agent.is_active(session_id):
+        result = form_filler_agent.start_or_continue(
+            session_id=session_id, form_type="rti_application", answer=message, language=language
+        )
+        result["agent"] = "form_filler"
+        result["detected_intent"] = "form"
+        return jsonify(result)
+
     intent = classify_intent(message)
 
     if intent == "rti":
@@ -74,6 +87,7 @@ def chat():
         result = form_filler_agent.start_or_continue(
             session_id=session_id, form_type="rti_application", language=language
         )
+        result["agent"] = "form_filler"
     else:
         result = {
             "agent": "orchestrator",
