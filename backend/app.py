@@ -27,7 +27,12 @@ CORS(app)
 # --------------------------------------------------------------------------
 
 _INTENT_KEYWORDS = {
-    "rti": ["rti", "right to information", "public information officer", "why hasn't", "why has my"],
+    "rti": [
+        "rti", "right to information", "public information officer",
+        "why hasn't", "why has my", "why is my", "ask why",
+        "passport", "ration card", "pension", "land record",
+        "pending", "stuck", "delayed", "delay", "status of my", "application status",
+    ],
     "rights": ["landlord", "deposit", "refund", "defective", "employer", "wages", "fired", "tenant", "consumer", "workplace"],
     "eligibility": ["eligible", "eligibility", "qualify", "scheme", "scholarship", "pm-kisan", "pmay", "ayushman"],
     "form": ["fill", "form", "application form", "apply for"],
